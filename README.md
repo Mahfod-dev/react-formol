@@ -1,4 +1,4 @@
-# react-formify
+# react-formol
 
 ## Table of Contents
 
@@ -24,7 +24,7 @@
 
 ## Introduction
 
-`react-formify` is a React library for streamlined form management. This library
+`react-formol` is a React library for streamlined form management. This library
 includes a range of components designed to create powerful and customizable
 forms.
 
@@ -33,13 +33,13 @@ forms.
 ## Installation
 
 ```bash
-npm install react-formify
+npm install react-formol
 ```
 
 Or if you're using Yarn:
 
 ```bash
-yarn add react-formify
+yarn add react-formol
 ```
 
 ---
@@ -51,7 +51,7 @@ yarn add react-formify
 The wrapper component for your form elements.
 
 ```jsx
-import { Form } from 'react-formify';
+import { Form } from 'react-formol';
 
 <Form>
 	<Input
@@ -71,7 +71,7 @@ import { Form } from 'react-formify';
 Provides the required context for form components.
 
 ```jsx
-import { FormContext } from 'react-formify';
+import { FormContext } from 'react-formol';
 
 <FormContext.Provider value={{ ...methods }}>
 	<form onSubmit={methods.handleSubmit(handleSubmit)}>{children}</form>
@@ -91,7 +91,7 @@ Component for input fields.
 -   `validationOptions`: Object
 
 ```jsx
-import { Input } from 'react-formify';
+import { Input } from 'react-formol';
 
 <Input
 	name='age'
@@ -113,7 +113,7 @@ Component for dropdown selection.
 -   `id`: String (required)
 
 ```jsx
-import { Select } from 'react-formify';
+import { Select } from 'react-formol';
 
 <Select
 	name='choice'
@@ -136,7 +136,7 @@ Component for buttons.
 -   `onError`: Function
 
 ```jsx
-import { Button } from 'react-formify';
+import { Button } from 'react-formol';
 
 <Button
 	type='submit'
@@ -153,7 +153,7 @@ Component for displaying error messages.
 -   `name`: String (required)
 
 ```jsx
-import { ErrorMessage } from 'react-formify';
+import { ErrorMessage } from 'react-formol';
 
 <ErrorMessage name='age' />;
 ```
@@ -169,7 +169,7 @@ Component for grouping radio buttons.
 -   `label`: String (required)
 
 ```jsx
-import { RadioGroup } from 'react-formify';
+import { RadioGroup } from 'react-formol';
 
 <RadioGroup
 	name='gender'
@@ -192,7 +192,7 @@ Individual radio button component.
 -   `value`: String (required)
 
 ```jsx
-import { Radio } from 'react-formify';
+import { Radio } from 'react-formol';
 
 <Radio
 	name='gender'
@@ -212,7 +212,7 @@ Component for date picking.
 -   `id`: String (required)
 
 ```jsx
-import { DatePicker } from 'react-formify';
+import { DatePicker } from 'react-formol';
 
 <DatePicker
 	name='birthdate'
@@ -232,7 +232,7 @@ Component for checkboxes.
 -   `id`: String (required)
 
 ```jsx
-import { Checkbox } from 'react-formify';
+import { Checkbox } from 'react-formol';
 
 <Checkbox
 	name='terms'
@@ -252,7 +252,7 @@ Component for multiline text input.
 -   `id`: String (required)
 
 ```jsx
-import { Textarea } from 'react-formify';
+import { Textarea } from 'react-formol';
 
 <Textarea
 	name='description'

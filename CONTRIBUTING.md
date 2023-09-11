@@ -1,10 +1,10 @@
 ---
 
-# Contributing to react-formify
+# Contributing to react-formol
 
 ## Introduction
 
-Thank you for your interest in contributing to `react-formify`! This document provides guidelines for contributing to the project. Please take a moment to read it to make the contribution process easier and effective for everyone involved.
+Thank you for your interest in contributing to `react-formol`! This document provides guidelines for contributing to the project. Please take a moment to read it to make the contribution process easier and effective for everyone involved.
 
 ## Prerequisites
 
@@ -18,12 +18,12 @@ Thank you for your interest in contributing to `react-formify`! This document pr
 
 2. **Clone Your Fork:**
     ```bash
-    git clone https://github.com/mahfod-dev/react-formify.git
+    git clone https://github.com/mahfod-dev/react-formol.git
     ```
 
 3. **Install Dependencies:**
     ```bash
-    cd react-formify
+    cd react-formol
     npm install
     ```
     or if you are using Yarn:
@@ -33,7 +33,7 @@ Thank you for your interest in contributing to `react-formify`! This document pr
 
 ## Working on Issues
 
-1. **Find an Issue:** Look for an issue that interests you [here](https://github.com/project_owner/react-formify/issues).
+1. **Find an Issue:** Look for an issue that interests you [here](https://github.com/project_owner/react-formol/issues).
 
 2. **Create a Branch:** Create a new branch to work on the issue.
     ```bash
