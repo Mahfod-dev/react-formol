@@ -5,8 +5,11 @@ import {
 	Select,
 	Button,
 	RadioGroup,
+	Radio,
 	Checkbox,
 	FileUpload,
+	DatePicker,
+	ErrorMessage,
 } from './components';
 
 function App() {
@@ -40,7 +43,8 @@ function App() {
 	return (
 		<Form
 			onSubmit={onSubmit}
-			defaultValues={initialData}>
+			defaultValues={initialData}
+			defaultErrorStyle='text-red-600 text-sm'>
 			<Input
 				name='name'
 				label='Name'
@@ -49,7 +53,14 @@ function App() {
 				validationOptions={{
 					required: { value: true, message: 'Le nom est requis' },
 				}}
+				styleClasses={{
+					width: 'w-1/2',
+					size: 'text-lg',
+					color: 'text-blue-700',
+					other: 'focus:border-blue-500',
+				}}
 			/>
+
 			<Input
 				name='age'
 				label='Age'
@@ -63,61 +74,141 @@ function App() {
 						message: "L'âge doit être au maximum de 150",
 					},
 				}}
-			/>
-			<Select
-				name='choice'
-				label='Choice'
-				id='choice'
-				options={['Option 1', 'Option 2', 'Option 3']}
-				validationOptions={{
-					required: { value: true, message: 'Un choix est requis' },
+				styleClasses={{
+					other: 'focus:border-green-500',
 				}}
 			/>
-			<TextArea
-				name='description'
-				label='Description'
-				id='description'
+			<Input
+				name='name'
+				label='Name'
+				id='name'
+				type='text'
 				validationOptions={{
-					maxLength: {
-						value: 200,
-						message:
-							'La description doit avoir au maximum 200 caractères',
+					required: { value: true, message: 'Le nom est requis' },
+				}}
+			/>
+
+			<Select
+				styleClasses={{
+					width: 'w-1/3',
+					size: 'text-lg',
+					color: 'text-red-700',
+					other: 'focus:border-red-500',
+				}}
+				name='gender'
+				options={['Male', 'Female']}
+				label='Gender'
+				id='gender'
+				validationOptions={{ required: true }}
+			/>
+			<TextArea
+				styleClasses={{
+					width: 'w-1/2',
+					size: 'text-sm',
+					color: 'text-blue-700',
+					other: 'focus:border-blue-500',
+				}}
+				name='message'
+				label='Message'
+				id='message'
+				rows={4}
+				cols={50}
+				validationOptions={{
+					required: { value: true, message: 'Le message est requis' },
+				}}
+			/>
+
+			<RadioGroup
+				styleClasses={{
+					input: 'h-4 w-4',
+					label: 'text-xs',
+					fieldset: 'border p-2',
+					legend: 'text-lg',
+				}}
+				name='choice'
+				label='Your choice'
+				options={[
+					{ value: 'yes', label: 'Yes' },
+					{ value: 'no', label: 'No' },
+				]}
+				validationOptions={{
+					required: { value: true, message: 'A choice is required' },
+				}}
+			/>
+
+			<Checkbox
+				styleClasses={{
+					input: 'h-4 w-4',
+					label: 'text-xs',
+					div: 'border p-2',
+				}}
+				name='subscribe'
+				label='Subscribe to newsletter'
+				id='subscribe'
+				validationOptions={{
+					required: {
+						value: true,
+						message: 'Subscription is required',
 					},
 				}}
 			/>
-			<RadioGroup
-				name='gender'
-				label='Gender'
-				options={[
-					{ label: 'Male', value: 'male' },
-					{ label: 'Female', value: 'female' },
-				]}
-				validationOptions={{
-					required: { value: true, message: 'Le genre est requis' },
-				}}
-			/>
-			<Checkbox
-				name='acceptTerms'
-				id='acceptTerms'
-				label='Accept Terms and Conditions'
-				validationOptions={{
-					required: { value: true, message: "L'accord est requis" },
-				}}
-			/>
+
 			<FileUpload
+				styleClasses={{
+					input: 'text-sm',
+					label: 'text-lg',
+					div: 'border p-4',
+				}}
 				name='file'
+				label='Upload your file'
 				id='file'
-				label='Upload File'
 				validationOptions={{
-					required: { value: true, message: 'Un fichier est requis' },
+					required: { value: true, message: 'File is required' },
 				}}
 			/>
+			<DatePicker
+				styleClasses={{
+					input: 'text-sm',
+					label: 'text-lg',
+					div: 'border p-4',
+				}}
+				name='date'
+				label='Select a date'
+				id='date'
+				validationOptions={{
+					required: { value: true, message: 'Date is required' },
+				}}
+			/>
+			<Radio
+				styleClasses={{
+					input: 'text-red-500 h-6 w-6',
+					label: 'text-xl',
+					div: 'border p-2',
+				}}
+				name='gender'
+				label='Male'
+				id='male'
+				value='male'
+				validationOptions={{
+					required: { value: true, message: 'Gender is required' },
+				}}
+			/>
+			<ErrorMessage
+				name='username'
+				styleClasses={{
+					paragraph: 'text-blue-600 text-sm bold',
+				}}
+			/>
+
 			<Button
 				type='submit'
-				name='Submit'
+				name='Envoyer'
 				onClick={onSubmit}
 				onSuccess={onSuccess}
 				onError={onError}
+				styleClasses={{
+					button: 'bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded',
+				}}
 			/>
 		</Form>
 	);
