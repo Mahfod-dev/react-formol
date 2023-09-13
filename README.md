@@ -1,6 +1,3 @@
-Certainly, here's the README with the missing `FileUpload` component included:
-
-````markdown
 # react-formol
 
 ## Table of Contents
@@ -39,6 +36,7 @@ forms.
 ```bash
 npm install react-formol
 ```
+
 ````
 
 Or if you're using Yarn:
@@ -632,3 +630,4 @@ MIT License. See [LICENSE](LICENSE) for more information.
 
 
 ```
+````
