@@ -1,3 +1,6 @@
+Certainly, here's the README with the missing `FileUpload` component included:
+
+````markdown
 # react-formol
 
 ## Table of Contents
@@ -16,6 +19,7 @@
     -   [DatePicker](#datepicker)
     -   [Checkbox](#checkbox)
     -   [Textarea](#textarea)
+    -   [FileUpload](#fileupload) <!-- Updated with FileUpload -->
 -   [Examples](#examples)
 -   [Contributors](#contributors)
 -   [License](#license)
@@ -35,6 +39,7 @@ forms.
 ```bash
 npm install react-formol
 ```
+````
 
 Or if you're using Yarn:
 
@@ -48,39 +53,31 @@ yarn add react-formol
 
 ### Form
 
-The wrapper component for your form elements.
+The `Form` component is the wrapper for your form elements.
 
 ```jsx
 import { Form } from 'react-formol';
 
-<Form>
-	<Input
-		name='name'
-		label='Name'
-		id='name'
-		type='text'
-		validationOptions={{
-			required: { value: true, message: 'Le nom est requis' },
-		}}
-	/>
-</Form>;
+<Form>{/* Your form components */}</Form>;
 ```
 
 ### FormContext
 
-Provides the required context for form components.
+The `FormContext` provides the required context for form components.
 
 ```jsx
 import { FormContext } from 'react-formol';
 
 <FormContext.Provider value={{ ...methods }}>
-	<form onSubmit={methods.handleSubmit(handleSubmit)}>{children}</form>
+	<form onSubmit={methods.handleSubmit(handleSubmit)}>
+		{/* Your form components */}
+	</form>
 </FormContext.Provider>;
 ```
 
 ### Input
 
-Component for input fields.
+The `Input` component is used for input fields.
 
 #### Props
 
@@ -89,6 +86,7 @@ Component for input fields.
 -   `id`: String (required)
 -   `type`: String
 -   `validationOptions`: Object
+-   `styleClasses`: Object (optional) - Custom CSS classes for styling.
 
 ```jsx
 import { Input } from 'react-formol';
@@ -98,12 +96,20 @@ import { Input } from 'react-formol';
 	label='Age'
 	id='age'
 	type='number'
+	validationOptions={{
+		required: { value: true, message: 'Age is required' },
+	}}
+	styleClasses={{
+		width: 'w-1/2',
+		size: 'text-lg',
+		color: 'text-blue-700',
+	}}
 />;
 ```
 
 ### Select
 
-Component for dropdown selection.
+The `Select` component is used for dropdown selection.
 
 #### Props
 
@@ -111,6 +117,8 @@ Component for dropdown selection.
 -   `options`: Array of Strings (required)
 -   `label`: String (required)
 -   `id`: String (required)
+-   `validationOptions`: Object
+-   `styleClasses`: Object (optional) - Custom CSS classes for styling.
 
 ```jsx
 import { Select } from 'react-formol';
@@ -120,12 +128,20 @@ import { Select } from 'react-formol';
 	label='Choice'
 	id='choice'
 	options={['Option 1', 'Option 2', 'Option 3']}
+	validationOptions={{
+		required: { value: true, message: 'A choice is required' },
+	}}
+	styleClasses={{
+		width: 'w-1/3',
+		size: 'text-lg',
+		color: 'text-red-700',
+	}}
 />;
 ```
 
 ### Button
 
-Component for buttons.
+The `Button` component is used for buttons.
 
 #### Props
 
@@ -134,6 +150,7 @@ Component for buttons.
 -   `onClick`: Function
 -   `onSuccess`: Function
 -   `onError`: Function
+-   `styleClasses`: Object (optional) - Custom CSS classes for styling.
 
 ```jsx
 import { Button } from 'react-formol';
@@ -141,32 +158,46 @@ import { Button } from 'react-formol';
 <Button
 	type='submit'
 	name='Submit'
+	onClick={onSubmit}
+	onSuccess={onSuccess}
+	onError={onError}
+	styleClasses={{
+		button: 'bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded',
+	}}
 />;
 ```
 
 ### ErrorMessage
 
-Component for displaying error messages.
+The `ErrorMessage` component is used for displaying error messages.
 
 #### Props
 
 -   `name`: String (required)
+-   `styleClasses`: Object (optional) - Custom CSS classes for styling.
 
 ```jsx
 import { ErrorMessage } from 'react-formol';
 
-<ErrorMessage name='age' />;
+<ErrorMessage
+	name='age'
+	styleClasses={{
+		paragraph: 'text-red-600 text-sm bold',
+	}}
+/>;
 ```
 
 ### RadioGroup
 
-Component for grouping radio buttons.
+The `RadioGroup` component is used for grouping radio buttons.
 
 #### Props
 
 -   `name`: String (required)
 -   `options`: Array of Objects (required)
 -   `label`: String (required)
+-   `validationOptions`: Object
+-   `styleClasses`: Object (optional) - Custom CSS classes for styling.
 
 ```jsx
 import { RadioGroup } from 'react-formol';
@@ -178,18 +209,29 @@ import { RadioGroup } from 'react-formol';
 		{ label: 'Male', value: 'male' },
 		{ label: 'Female', value: 'female' },
 	]}
+	validationOptions={{
+		required: { value: true, message: 'Gender is required' },
+	}}
+	styleClasses={{
+		input: 'h-4 w-4',
+		label: 'text-xs',
+		fieldset: 'border p-2',
+		legend: 'text-lg',
+	}}
 />;
 ```
 
 ### Radio
 
-Individual radio button component.
+The `Radio` component is used for individual radio buttons.
 
 #### Props
 
 -   `name`: String (required)
 -   `label`: String (required)
 -   `value`: String (required)
+-   `validationOptions`: Object
+-   `styleClasses`: Object (optional) - Custom CSS classes for styling.
 
 ```jsx
 import { Radio } from 'react-formol';
@@ -198,18 +240,30 @@ import { Radio } from 'react-formol';
 	name='gender'
 	label='Male'
 	value='male'
+	validationOptions={{
+		required: { value: true, message: 'Gender is required' },
+	}}
+	styleClasses={{
+		input: 'text-red-500 h-6 w-6',
+		label: 'text-xl',
+		div: 'border p-2',
+	}}
 />;
 ```
 
 ### DatePicker
 
-Component for date picking.
+The
+
+`DatePicker` component is used for date picking.
 
 #### Props
 
 -   `name`: String (required)
 -   `label`: String (required)
 -   `id`: String (required)
+-   `validationOptions`: Object
+-   `styleClasses`: Object (optional) - Custom CSS classes for styling.
 
 ```jsx
 import { DatePicker } from 'react-formol';
@@ -218,38 +272,58 @@ import { DatePicker } from 'react-formol';
 	name='birthdate'
 	label='Birthdate'
 	id='birthdate'
+	validationOptions={{
+		required: { value: true, message: 'Date is required' },
+	}}
+	styleClasses={{
+		input: 'text-sm',
+		label: 'text-lg',
+		div: 'border p-4',
+	}}
 />;
 ```
 
 ### Checkbox
 
-Component for checkboxes.
+The `Checkbox` component is used for checkboxes.
 
 #### Props
 
 -   `name`: String (required)
 -   `label`: String (required)
 -   `id`: String (required)
+-   `validationOptions`: Object
+-   `styleClasses`: Object (optional) - Custom CSS classes for styling.
 
 ```jsx
 import { Checkbox } from 'react-formol';
 
 <Checkbox
-	name='terms'
-	label='Accept Terms'
-	id='terms'
+	name='acceptTerms'
+	id='acceptTerms'
+	label='Accept Terms and Conditions'
+	validationOptions={{
+		required: { value: true, message: 'Agreement is required' },
+	}}
+	styleClasses={{
+		input: 'h-4 w-4',
+		label: 'text-xs',
+		div: 'border p-2',
+	}}
 />;
 ```
 
 ### Textarea
 
-Component for multiline text input.
+The `Textarea` component is used for multiline text input.
 
 #### Props
 
 -   `name`: String (required)
 -   `label`: String (required)
 -   `id`: String (required)
+-   `validationOptions`: Object
+-   `styleClasses`: Object (optional) - Custom CSS classes for styling.
 
 ```jsx
 import { Textarea } from 'react-formol';
@@ -258,6 +332,44 @@ import { Textarea } from 'react-formol';
 	name='description'
 	label='Description'
 	id='description'
+	validationOptions={{
+		required: { value: true, message: 'Description is required' },
+	}}
+	styleClasses={{
+		input: 'text-sm',
+		label: 'text-lg',
+		div: 'border p-4',
+	}}
+/>;
+```
+
+### FileUpload
+
+The `FileUpload` component is used for file uploads.
+
+#### Props
+
+-   `name`: String (required)
+-   `label`: String (required)
+-   `id`: String (required)
+-   `validationOptions`: Object
+-   `styleClasses`: Object (optional) - Custom CSS classes for styling.
+
+```jsx
+import { FileUpload } from 'react-formol';
+
+<FileUpload
+	name='file'
+	label='Upload File'
+	id='file'
+	validationOptions={{
+		required: { value: true, message: 'File is required' },
+	}}
+	styleClasses={{
+		input: 'text-sm',
+		label: 'text-lg',
+		div: 'border p-4',
+	}}
 />;
 ```
 
@@ -275,8 +387,11 @@ import {
 	Select,
 	Button,
 	RadioGroup,
+	Radio,
 	Checkbox,
 	FileUpload,
+	DatePicker,
+	ErrorMessage,
 } from './components';
 
 function App() {
@@ -310,7 +425,8 @@ function App() {
 	return (
 		<Form
 			onSubmit={onSubmit}
-			defaultValues={initialData}>
+			defaultValues={initialData}
+			defaultErrorStyle='text-red-600 text-sm'>
 			<Input
 				name='name'
 				label='Name'
@@ -319,7 +435,14 @@ function App() {
 				validationOptions={{
 					required: { value: true, message: 'Le nom est requis' },
 				}}
+				styleClasses={{
+					width: 'w-1/2',
+					size: 'text-lg',
+					color: 'text-blue-700',
+					other: 'focus:border-blue-500',
+				}}
 			/>
+
 			<Input
 				name='age'
 				label='Age'
@@ -333,61 +456,141 @@ function App() {
 						message: "L'âge doit être au maximum de 150",
 					},
 				}}
-			/>
-			<Select
-				name='choice'
-				label='Choice'
-				id='choice'
-				options={['Option 1', 'Option 2', 'Option 3']}
-				validationOptions={{
-					required: { value: true, message: 'Un choix est requis' },
+				styleClasses={{
+					other: 'focus:border-green-500',
 				}}
 			/>
-			<TextArea
-				name='description'
-				label='Description'
-				id='description'
+			<Input
+				name='name'
+				label='Name'
+				id='name'
+				type='text'
 				validationOptions={{
-					maxLength: {
-						value: 200,
-						message:
-							'La description doit avoir au maximum 200 caractères',
+					required: { value: true, message: 'Le nom est requis' },
+				}}
+			/>
+
+			<Select
+				styleClasses={{
+					width: 'w-1/3',
+					size: 'text-lg',
+					color: 'text-red-700',
+					other: 'focus:border-red-500',
+				}}
+				name='gender'
+				options={['Male', 'Female']}
+				label='Gender'
+				id='gender'
+				validationOptions={{ required: true }}
+			/>
+			<TextArea
+				styleClasses={{
+					width: 'w-1/2',
+					size: 'text-sm',
+					color: 'text-blue-700',
+					other: 'focus:border-blue-500',
+				}}
+				name='message'
+				label='Message'
+				id='message'
+				rows={4}
+				cols={50}
+				validationOptions={{
+					required: { value: true, message: 'Le message est requis' },
+				}}
+			/>
+
+			<RadioGroup
+				styleClasses={{
+					input: 'h-4 w-4',
+					label: 'text-xs',
+					fieldset: 'border p-2',
+					legend: 'text-lg',
+				}}
+				name='choice'
+				label='Your choice'
+				options={[
+					{ value: 'yes', label: 'Yes' },
+					{ value: 'no', label: 'No' },
+				]}
+				validationOptions={{
+					required: { value: true, message: 'A choice is required' },
+				}}
+			/>
+
+			<Checkbox
+				styleClasses={{
+					input: 'h-4 w-4',
+					label: 'text-xs',
+					div: 'border p-2',
+				}}
+				name='subscribe'
+				label='Subscribe to newsletter'
+				id='subscribe'
+				validationOptions={{
+					required: {
+						value: true,
+						message: 'Subscription is required',
 					},
 				}}
 			/>
-			<RadioGroup
-				name='gender'
-				label='Gender'
-				options={[
-					{ label: 'Male', value: 'male' },
-					{ label: 'Female', value: 'female' },
-				]}
-				validationOptions={{
-					required: { value: true, message: 'Le genre est requis' },
-				}}
-			/>
-			<Checkbox
-				name='acceptTerms'
-				id='acceptTerms'
-				label='Accept Terms and Conditions'
-				validationOptions={{
-					required: { value: true, message: "L'accord est requis" },
-				}}
-			/>
+
 			<FileUpload
+				styleClasses={{
+					input: 'text-sm',
+					label: 'text-lg',
+					div: 'border p-4',
+				}}
 				name='file'
+				label='Upload your file'
 				id='file'
-				label='Upload File'
 				validationOptions={{
-					required: { value: true, message: 'Un fichier est requis' },
+					required: { value: true, message: 'File is required' },
 				}}
 			/>
+			<DatePicker
+				styleClasses={{
+					input: 'text-sm',
+					label: 'text-lg',
+					div: 'border p-4',
+				}}
+				name='date'
+				label='Select a date'
+				id='date'
+				validationOptions={{
+					required: { value: true, message: 'Date is required' },
+				}}
+			/>
+			<Radio
+				styleClasses={{
+					input: 'text-red-500 h-6 w-6',
+					label: 'text-xl',
+					div: 'border p-2',
+				}}
+				name='gender'
+				label='Male'
+				id='male'
+				value='male'
+				validationOptions={{
+					required: { value: true, message: 'Gender is required' },
+				}}
+			/>
+			<ErrorMessage
+				name='username'
+				styleClasses={{
+					paragraph: 'text-blue-600 text-sm bold',
+				}}
+			/>
+
 			<Button
 				type='submit'
-				name='Submit'
+				name='Envoyer'
 				onClick={onSubmit}
 				onSuccess={onSuccess}
 				onError={onError}
+				styleClasses={{
+					button: 'bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded',
+				}}
 			/>
 		</Form>
 	);
@@ -414,6 +617,8 @@ If you would like to contribute, please follow the
 MIT License. See [LICENSE](LICENSE) for more information.
 
 ```
+
+
 
 
 
