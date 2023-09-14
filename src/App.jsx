@@ -10,7 +10,7 @@ import {
 	FileUpload,
 	DatePicker,
 	ErrorMessage,
-} from './components';
+} from '@react-formol';
 
 function App() {
 	const initialData = {

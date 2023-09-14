@@ -1,0 +1,22 @@
+# Fichiers de configuration pour le développement
+.eslintrc
+.prettierrc
+.editorconfig
+vite.config.js
+
+# Dossiers de développement
+node_modules/
+demo_dist/
+
+# Fichiers de tests
+__tests__/
+*.test.js
+
+# Fichiers temporaires ou spécifiques à l'OS
+.DS_Store
+*.log
+
+# Autres fichiers non nécessaires à la librairie
+README.md (si vous n'avez pas besoin d'inclure la documentation dans le package)
+CHANGELOG.md
+LICENSE
