@@ -6,20 +6,27 @@ import ErrorMessage from './ErrorMessage';
 const Checkbox = ({ name, label, id, validationOptions, styleClasses }) => {
 	const { register } = useContext(FormContext);
 
-	// Classes personnalisables
-	const { input = '', label: labelClass = '', div = '' } = styleClasses || {};
+	const defaultInputClass = '';
+	const defaultLabelClass = 'ml-2';
+	const defaultDivClass = 'mb-4';
+
+	const {
+		input = defaultInputClass,
+		label: labelClass = defaultLabelClass,
+		div = defaultDivClass,
+	} = styleClasses || {};
 
 	return (
-		<div className={`mb-4 ${div}`}>
+		<div className={div}>
 			<input
 				type='checkbox'
 				id={id}
 				{...register(name, validationOptions)}
-				className={`${input}`}
+				className={input}
 			/>
 			<label
 				htmlFor={id}
-				className={`ml-2 ${labelClass}`}>
+				className={labelClass}>
 				{label}
 			</label>
 			<ErrorMessage name={name} />
@@ -31,8 +38,8 @@ Checkbox.propTypes = {
 	name: PropTypes.string.isRequired,
 	label: PropTypes.string.isRequired,
 	id: PropTypes.string.isRequired,
-	validationOptions: PropTypes?.object,
-	styleClasses: PropTypes?.shape({
+	validationOptions: PropTypes.object,
+	styleClasses: PropTypes.shape({
 		input: PropTypes.string,
 		label: PropTypes.string,
 		div: PropTypes.string,

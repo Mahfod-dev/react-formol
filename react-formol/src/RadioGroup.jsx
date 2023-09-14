@@ -12,19 +12,23 @@ const RadioGroup = ({
 }) => {
 	const { register } = useContext(FormContext);
 
+	// Classes par défaut
+	const defaultFieldsetClass = 'mb-4';
+	const defaultLegendClass = 'block text-gray-700 font-bold mb-2';
+	const defaultInputClass = 'form-radio text-blue-500 h-5 w-5';
+	const defaultLabelClass = 'ml-2 text-gray-700';
+
 	// Classes personnalisables
 	const {
-		input = '',
-		label: labelClass = '',
-		fieldset = '',
-		legend = '',
+		fieldset: fieldsetClass = defaultFieldsetClass,
+		legend: legendClass = defaultLegendClass,
+		input: inputClass = defaultInputClass,
+		label: labelClass = defaultLabelClass,
 	} = styleClasses || {};
 
 	return (
-		<fieldset className={`mb-4 ${fieldset}`}>
-			<legend className={`block text-gray-700 font-bold mb-2 ${legend}`}>
-				{label}
-			</legend>
+		<fieldset className={fieldsetClass}>
+			<legend className={legendClass}>{label}</legend>
 			{options.map((option, index) => (
 				<div
 					key={index}
@@ -34,11 +38,11 @@ const RadioGroup = ({
 						value={option.value}
 						{...register(name, validationOptions)}
 						id={`${name}_${index}`}
-						className={`form-radio text-blue-500 h-5 w-5 ${input}`}
+						className={inputClass}
 					/>
 					<label
 						htmlFor={`${name}_${index}`}
-						className={`ml-2 text-gray-700 ${labelClass}`}>
+						className={labelClass}>
 						{option.label}
 					</label>
 				</div>
@@ -61,12 +65,12 @@ RadioGroup.propTypes = {
 			label: PropTypes.string.isRequired,
 		})
 	).isRequired,
-	validationOptions: PropTypes?.object,
-	styleClasses: PropTypes?.shape({
-		input: PropTypes.string,
-		label: PropTypes.string,
+	validationOptions: PropTypes.object,
+	styleClasses: PropTypes.shape({
 		fieldset: PropTypes.string,
 		legend: PropTypes.string,
+		input: PropTypes.string,
+		label: PropTypes.string,
 	}),
 };
 

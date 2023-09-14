@@ -3,44 +3,46 @@ import PropTypes from 'prop-types';
 import { FormContext } from './Form';
 import ErrorMessage from './ErrorMessage';
 
-const Select = ({
-	name,
-	options,
-	label,
-	id,
-	validationOptions,
-	styleClasses,
-}) => {
+const Select = ({ name, label, options, validationOptions, styleClasses }) => {
 	const { register } = useContext(FormContext);
 
-	const baseClass = 'shadow appearance-none border rounded py-2 px-3';
+	// Classes par défaut
+	const defaultContainerClass = 'mb-4';
+	const defaultLabelClass = 'block text-gray-700 font-bold mb-2';
+	const defaultSelectClass =
+		'shadow appearance-none border rounded py-2 px-3';
 
+	// Classes personnalisables
 	const {
-		width = 'w-full',
-		size = 'text-base',
-		color = 'text-gray-700',
-		other = '',
+		container = defaultContainerClass,
+		label: labelClass = defaultLabelClass,
+		select: selectClass = defaultSelectClass,
 	} = styleClasses || {};
 
-	const combinedClasses = `${baseClass} ${width} ${size} ${color} ${other}`;
-
 	return (
-		<div className='mb-4'>
+		<div className={container}>
 			<label
-				htmlFor={id}
-				className='block text-gray-700 font-bold mb-2'>
+				htmlFor={name}
+				className={labelClass}>
 				{label}
 			</label>
 			<select
+				id={name}
 				{...register(name, validationOptions)}
-				id={id}
+				className={selectClass}
 				aria-required={validationOptions?.required ? 'true' : 'false'}
-				className={combinedClasses}>
-				{options.map((option) => (
+				aria-label={label}
+				aria-invalid={
+					validationOptions?.required &&
+					!register(name, validationOptions)?.value
+						? 'true'
+						: 'false'
+				}>
+				{options.map((option, index) => (
 					<option
-						key={option}
-						value={option}>
-						{option}
+						key={index}
+						value={option.value}>
+						{option.label}
 					</option>
 				))}
 			</select>
@@ -51,15 +53,19 @@ const Select = ({
 
 Select.propTypes = {
 	name: PropTypes.string.isRequired,
-	options: PropTypes.arrayOf(PropTypes.string).isRequired,
 	label: PropTypes.string.isRequired,
-	id: PropTypes.string?.isRequired,
-	validationOptions: PropTypes.object?.isRequired,
-	styleClasses: PropTypes?.shape({
-		width: PropTypes.string,
-		size: PropTypes.string,
-		color: PropTypes.string,
-		other: PropTypes.string,
+	options: PropTypes.arrayOf(
+		PropTypes.shape({
+			value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+				.isRequired,
+			label: PropTypes.string.isRequired,
+		})
+	).isRequired,
+	validationOptions: PropTypes.object,
+	styleClasses: PropTypes.shape({
+		container: PropTypes.string,
+		label: PropTypes.string,
+		select: PropTypes.string,
 	}),
 };
 

@@ -40,11 +40,25 @@ function App() {
 		console.log('Erreur lors de la soumission des données', error);
 	};
 
+	const selectOptions = [
+		{ label: 'Option 1', value: 'option1' },
+		{ label: 'Option 2', value: 'option2' },
+		{ label: 'Option 3', value: 'option3' },
+	];
+
+	const customStyles = {
+		label: 'text-xl font-semibold',
+		select: 'text-lg',
+	};
+
 	return (
 		<Form
 			onSubmit={onSubmit}
 			defaultValues={initialData}
-			defaultErrorStyle='text-red-600 text-sm'>
+			defaultErrorStyle='text-red-600 text-sm'
+			styleClasses={{
+				form: 'bg-gray-100 p-4',
+			}}>
 			<Input
 				name='username'
 				label='Username'
@@ -57,47 +71,12 @@ function App() {
 				}}
 			/>
 
-			<Input
-				name='age'
-				label='Age'
-				id='age'
-				type='number'
-				validationOptions={{
-					required: { value: true, message: "L'âge est requis" },
-					min: { value: 1, message: "L'âge doit être au moins de 1" },
-					max: {
-						value: 150,
-						message: "L'âge doit être au maximum de 150",
-					},
-				}}
-				styleClasses={{
-					container: 'my-container',
-					label: 'my-label',
-					input: 'my-input',
-				}}
-			/>
-			<Input
-				name='name'
-				label='Name'
-				id='name'
-				type='text'
-				validationOptions={{
-					required: { value: true, message: 'Le nom est requis' },
-				}}
-			/>
-
 			<Select
-				styleClasses={{
-					width: 'w-1/3',
-					size: 'text-lg',
-					color: 'text-red-700',
-					other: 'focus:border-red-500',
-				}}
-				name='gender'
-				options={['Male', 'Female']}
-				label='Gender'
-				id='gender'
-				validationOptions={{ required: true }}
+				name='mySelect'
+				label='Choisissez une option'
+				options={selectOptions}
+				styleClasses={customStyles}
+				validationOptions={{ required: 'Ce champ est requis' }}
 			/>
 			<TextArea
 				styleClasses={{
@@ -135,19 +114,22 @@ function App() {
 			/>
 
 			<Checkbox
+				name='acceptTerms'
+				label="J'accepte les conditions générales"
+				id='termsCheckbox'
 				styleClasses={{
-					input: 'h-4 w-4',
-					label: 'text-xs',
-					div: 'border p-2',
+					input: 'custom-checkbox',
+					label: 'custom-label',
+					div: 'custom-div',
 				}}
-				name='subscribe'
-				label='Subscribe to newsletter'
-				id='subscribe'
-				validationOptions={{
-					required: {
-						value: true,
-						message: 'Subscription is required',
-					},
+			/>
+			<FileUpload
+				name='avatar'
+				label='Avatar'
+				id='avatar'
+				styleClasses={{
+					input: 'custom-input',
+					label: 'custom-label',
 				}}
 			/>
 
@@ -177,18 +159,17 @@ function App() {
 					required: { value: true, message: 'Date is required' },
 				}}
 			/>
+
 			<Radio
+				name='myRadio'
+				label='Acceptez-vous les termes et conditions ?'
+				id='acceptTandC'
+				value='yes'
+				validationOptions={{ required: true }}
 				styleClasses={{
-					input: 'text-red-500 h-6 w-6',
-					label: 'text-xl',
-					div: 'border p-2',
-				}}
-				name='gender'
-				label='Male'
-				id='male'
-				value='male'
-				validationOptions={{
-					required: { value: true, message: 'Gender is required' },
+					input: 'custom-radio',
+					label: 'custom-label',
+					div: 'custom-div',
 				}}
 			/>
 			<ErrorMessage
@@ -199,13 +180,19 @@ function App() {
 			/>
 
 			<Button
-				type='submit'
-				name='Envoyer'
-				onClick={onSubmit}
-				onSuccess={onSuccess}
-				onError={onError}
+				type='button'
+				name='Submit'
+				onClick={() => console.log('Submitted')}
 				styleClasses={{
-					button: 'bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded',
+					button: 'bg-blue-500 hover:bg-blue-700 text-white py-2 px-4',
+				}}
+			/>
+			<Button
+				type='button'
+				name='Submit'
+				onClick={() => console.log('Submitted')}
+				styleClasses={{
+					button: 'my-button',
 				}}
 			/>
 		</Form>

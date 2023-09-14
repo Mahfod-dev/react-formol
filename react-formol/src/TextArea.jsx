@@ -18,25 +18,24 @@ const TextArea = ({
 		return { ...validationOptions };
 	}, [validationOptions]);
 
-	// Classe de base
-	const baseClass = 'shadow appearance-none border rounded py-2 px-3';
+	// Classes par défaut
+	const defaultContainerClass = 'mb-4';
+	const defaultLabelClass = 'block text-gray-700 font-bold mb-2';
+	const defaultTextAreaClass =
+		'shadow appearance-none border rounded py-2 px-3';
 
 	// Classes personnalisables
 	const {
-		width = 'w-full',
-		size = 'text-base',
-		color = 'text-gray-700',
-		other = '',
+		container = defaultContainerClass,
+		label: labelClass = defaultLabelClass,
+		input: textAreaClass = defaultTextAreaClass,
 	} = styleClasses || {};
 
-	// Classe combinée
-	const combinedClasses = `${baseClass} ${width} ${size} ${color} ${other}`;
-
 	return (
-		<div className='mb-4'>
+		<div className={container}>
 			<label
 				htmlFor={id}
-				className='block text-gray-700 font-bold mb-2'>
+				className={labelClass}>
 				{label}
 			</label>
 			<textarea
@@ -44,6 +43,7 @@ const TextArea = ({
 				id={id}
 				rows={rows}
 				cols={cols}
+				className={textAreaClass}
 				aria-required={validationOptions?.required ? 'true' : 'false'}
 				aria-label={label}
 				aria-invalid={
@@ -51,7 +51,7 @@ const TextArea = ({
 						? 'true'
 						: 'false'
 				}
-				className={combinedClasses}></textarea>
+			/>
 			<ErrorMessage name={name} />
 		</div>
 	);
@@ -63,12 +63,11 @@ TextArea.propTypes = {
 	id: PropTypes.string.isRequired,
 	rows: PropTypes.number,
 	cols: PropTypes.number,
-	validationOptions: PropTypes?.object,
-	styleClasses: PropTypes?.shape({
-		width: PropTypes.string,
-		size: PropTypes.string,
-		color: PropTypes.string,
-		other: PropTypes.string,
+	validationOptions: PropTypes.object,
+	styleClasses: PropTypes.shape({
+		container: PropTypes.string,
+		label: PropTypes.string,
+		input: PropTypes.string,
 	}),
 };
 

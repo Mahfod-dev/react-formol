@@ -105,6 +105,87 @@ import { Input } from 'react-formol';
 />;
 ```
 
+## Customizing `Input` Component in `react-formol`
+
+This example showcases how you can customize the `Input` component using the `styleClasses` prop for styling and the `validationOptions` prop for validation.
+
+### Example Usage
+
+```jsx
+import React from 'react';
+import { Input, Form } from './react-formol'; // Update import based on your library structure
+
+const App = () => {
+  return (
+    <Form>
+      <Input
+        name="username"
+        label="Username"
+        id="username-input"
+        type="text"
+        validationOptions={{ required: true }}
+        styleClasses={{
+          container: 'custom-container',
+          label: 'custom-label',
+          input: 'custom-input'
+        }}
+      />
+    </Form>
+  );
+};
+
+export default App;
+```
+
+### Styling with Tailwind
+
+If you are using Tailwind CSS, you can easily specify its utility classes within the `styleClasses` prop:
+
+```jsx
+styleClasses={{
+  container: 'mb-6',
+  label: 'text-lg font-semibold text-gray-600',
+  input: 'p-2 border rounded-md'
+}}
+```
+
+### Styling with Traditional CSS
+
+You can also use traditional CSS. First, define your styles in a CSS file:
+
+```css
+/* styles.css */
+.custom-container {
+  margin-bottom: 1rem;
+}
+
+.custom-label {
+  font-weight: bold;
+  color: gray;
+}
+
+.custom-input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+}
+```
+
+Then, use these custom classes in the `styleClasses` props:
+
+```jsx
+styleClasses={{
+  container: 'custom-container',
+  label: 'custom-label',
+  input: 'custom-input'
+}}
+```
+
+
+```
+
+
+
 ### Select
 
 The `Select` component is used for dropdown selection.

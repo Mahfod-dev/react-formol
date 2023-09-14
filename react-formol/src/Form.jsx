@@ -5,7 +5,13 @@ import { ErrorStyleContext } from './ErrorStyleContext';
 
 export const FormContext = createContext();
 
-function Form({ defaultValues, children, onSubmit, defaultErrorStyle }) {
+function Form({
+	defaultValues,
+	children,
+	onSubmit,
+	styleClasses,
+	defaultErrorStyle,
+}) {
 	const methods = useForm({ defaultValues });
 	const handleSubmit = useCallback(
 		async (data) => {
@@ -15,10 +21,15 @@ function Form({ defaultValues, children, onSubmit, defaultErrorStyle }) {
 		[onSubmit, methods]
 	);
 
+	// Classes personnalisables
+	const { form = '' } = styleClasses || {};
+
 	return (
 		<FormContext.Provider value={{ ...methods }}>
 			<ErrorStyleContext.Provider value={defaultErrorStyle}>
-				<form onSubmit={methods.handleSubmit(handleSubmit)}>
+				<form
+					onSubmit={methods.handleSubmit(handleSubmit)}
+					className={`${form}`}>
 					{children}
 				</form>
 			</ErrorStyleContext.Provider>
@@ -27,9 +38,13 @@ function Form({ defaultValues, children, onSubmit, defaultErrorStyle }) {
 }
 
 Form.propTypes = {
-	defaultValues: PropTypes?.object,
+	defaultValues: PropTypes.object,
 	children: PropTypes.node,
 	onSubmit: PropTypes.func.isRequired,
+	styleClasses: PropTypes.shape({
+		form: PropTypes.string,
+	}),
+	defaultErrorStyle: PropTypes.string,
 };
 
 export default Form;

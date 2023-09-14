@@ -25,9 +25,11 @@
 
 ## Introduction
 
-`react-formol` is a React library for streamlined form management. This library
-includes a range of components designed to create powerful and customizable
-forms.
+`react-formol` is a React library designed to simplify form management in web
+applications. It provides a variety of components that make it easier to create
+powerful and customizable forms. One of the key advantages of this library is
+its flexibility in styling. You can choose to use CSS frameworks like Tailwind
+or go for traditional CSS depending on your project requirements.
 
 ---
 

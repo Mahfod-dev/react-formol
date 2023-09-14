@@ -16,3 +16,55 @@
 .my-input {
     border-color: #ff4500;
 }
+
+.my-button {
+    background-color: #008CBA;
+    color: white;
+    padding: 14px 20px;
+    text-align: center;
+}
+
+.custom-checkbox {
+    background-color: lightgray;
+}
+
+.custom-label {
+    color: #333;
+}
+
+.custom-div {
+    margin-bottom: 20px;
+}
+
+.custom-input {
+    background-color: lightgray;
+}
+
+.custom-label {
+    color: #333;
+}
+
+.custom-div {
+    margin-bottom: 20px;
+}
+
+.custom-input {
+    border: none;
+    box-shadow: 0px 0px 5px grey;
+}
+
+.custom-label {
+    color: blue;
+}
+
+.custom-radio {
+    color: red;
+}
+
+.custom-label {
+    font-weight: bold;
+}
+
+.custom-div {
+    padding: 20px;
+}

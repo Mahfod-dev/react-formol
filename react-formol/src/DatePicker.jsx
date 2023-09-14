@@ -6,6 +6,7 @@ import ErrorMessage from './ErrorMessage';
 const DatePicker = ({ name, label, id, validationOptions, styleClasses }) => {
 	const { register, unregister, setValue } = useContext(FormContext);
 
+	// S'inscrire au démarrage et se désinscrire à la destruction
 	useEffect(() => {
 		register(name, validationOptions);
 		return () => {
@@ -17,14 +18,23 @@ const DatePicker = ({ name, label, id, validationOptions, styleClasses }) => {
 		setValue(name, e.target.value);
 	};
 
-	// Classes personnalisables
-	const { input = '', label: labelClass = '', div = '' } = styleClasses || {};
+	// Classes par défaut
+	const defaultInputClass =
+		'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline';
+	const defaultLabelClass = 'block text-gray-700 font-bold mb-2';
+	const defaultDivClass = 'mb-4';
+
+	const {
+		input = defaultInputClass,
+		label: labelClass = defaultLabelClass,
+		div = defaultDivClass,
+	} = styleClasses || {};
 
 	return (
-		<div className={`mb-4 ${div}`}>
+		<div className={div}>
 			<label
 				htmlFor={id}
-				className={`block text-gray-700 font-bold mb-2 ${labelClass}`}>
+				className={labelClass}>
 				{label}
 			</label>
 			<input
@@ -32,7 +42,7 @@ const DatePicker = ({ name, label, id, validationOptions, styleClasses }) => {
 				id={id}
 				name={name}
 				onChange={handleChange}
-				className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${input}`}
+				className={input}
 			/>
 			<ErrorMessage name={name} />
 		</div>
@@ -43,8 +53,8 @@ DatePicker.propTypes = {
 	name: PropTypes.string.isRequired,
 	label: PropTypes.string.isRequired,
 	id: PropTypes.string.isRequired,
-	validationOptions: PropTypes?.object,
-	styleClasses: PropTypes?.shape({
+	validationOptions: PropTypes.object,
+	styleClasses: PropTypes.shape({
 		input: PropTypes.string,
 		label: PropTypes.string,
 		div: PropTypes.string,

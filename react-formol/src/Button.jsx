@@ -26,9 +26,11 @@ const Button = ({ type, name, onClick, onSuccess, onError, styleClasses }) => {
 		}
 	};
 
-	const buttonClass =
-		styleClasses?.button ||
+	// Classe par défaut
+	const defaultButtonClass =
 		'bg-slate-800 hover:bg-slate-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4 ml-auto';
+
+	const buttonClass = styleClasses?.button || defaultButtonClass;
 
 	return (
 		<button
@@ -45,11 +47,11 @@ const Button = ({ type, name, onClick, onSuccess, onError, styleClasses }) => {
 
 Button.propTypes = {
 	type: PropTypes.string.isRequired,
-	name: PropTypes.string?.isRequired,
-	onClick: PropTypes.func?.isRequired,
-	onSuccess: PropTypes?.func,
-	onError: PropTypes?.func,
-	styleClasses: PropTypes?.shape({
+	name: PropTypes.string.isRequired,
+	onClick: PropTypes.func.isRequired,
+	onSuccess: PropTypes.func,
+	onError: PropTypes.func,
+	styleClasses: PropTypes.shape({
 		button: PropTypes.string,
 	}),
 };
