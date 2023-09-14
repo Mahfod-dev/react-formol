@@ -46,18 +46,14 @@ function App() {
 			defaultValues={initialData}
 			defaultErrorStyle='text-red-600 text-sm'>
 			<Input
-				name='name'
-				label='Name'
-				id='name'
+				name='username'
+				label='Username'
+				id='username'
 				type='text'
-				validationOptions={{
-					required: { value: true, message: 'Le nom est requis' },
-				}}
 				styleClasses={{
-					width: 'w-1/2',
-					size: 'text-lg',
-					color: 'text-blue-700',
-					other: 'focus:border-blue-500',
+					container: 'mb-5',
+					label: 'text-xl text-blue-500',
+					input: 'border-blue-500',
 				}}
 			/>
 
@@ -75,7 +71,9 @@ function App() {
 					},
 				}}
 				styleClasses={{
-					other: 'focus:border-green-500',
+					container: 'my-container',
+					label: 'my-label',
+					input: 'my-input',
 				}}
 			/>
 			<Input
