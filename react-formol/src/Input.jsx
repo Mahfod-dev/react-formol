@@ -6,6 +6,16 @@ import ErrorMessage from './ErrorMessage';
 const Input = ({ name, label, id, type, validationOptions, styleClasses }) => {
 	const { register } = useContext(FormContext);
 
+	console.log(
+		'Input',
+		name,
+		label,
+		id,
+		type,
+		validationOptions,
+		styleClasses
+	);
+
 	const registerOptions = useMemo(() => {
 		const options = { ...validationOptions };
 		if (type === 'number') {
