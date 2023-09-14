@@ -39,7 +39,7 @@ or go for traditional CSS depending on your project requirements.
 npm install react-formol
 ```
 
-````
+```
 
 Or if you're using Yarn:
 
