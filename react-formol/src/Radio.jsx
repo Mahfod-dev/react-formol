@@ -33,8 +33,8 @@ Radio.propTypes = {
 	label: PropTypes.string.isRequired,
 	id: PropTypes.string.isRequired,
 	value: PropTypes.string.isRequired,
-	validationOptions: PropTypes.object,
-	styleClasses: PropTypes.shape({
+	validationOptions: PropTypes?.object,
+	styleClasses: PropTypes?.shape({
 		input: PropTypes.string,
 		label: PropTypes.string,
 		div: PropTypes.string,

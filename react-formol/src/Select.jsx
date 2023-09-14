@@ -53,9 +53,9 @@ Select.propTypes = {
 	name: PropTypes.string.isRequired,
 	options: PropTypes.arrayOf(PropTypes.string).isRequired,
 	label: PropTypes.string.isRequired,
-	id: PropTypes.string.isRequired,
-	validationOptions: PropTypes.object,
-	styleClasses: PropTypes.shape({
+	id: PropTypes.string?.isRequired,
+	validationOptions: PropTypes.object?.isRequired,
+	styleClasses: PropTypes?.shape({
 		width: PropTypes.string,
 		size: PropTypes.string,
 		color: PropTypes.string,

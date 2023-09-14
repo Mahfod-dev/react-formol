@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { FormContext } from './Form';
 
@@ -45,11 +45,11 @@ const Button = ({ type, name, onClick, onSuccess, onError, styleClasses }) => {
 
 Button.propTypes = {
 	type: PropTypes.string.isRequired,
-	name: PropTypes.string.isRequired,
+	name: PropTypes.string?.isRequired,
 	onClick: PropTypes.func?.isRequired,
 	onSuccess: PropTypes?.func,
 	onError: PropTypes?.func,
-	styleClasses: PropTypes.shape({
+	styleClasses: PropTypes?.shape({
 		button: PropTypes.string,
 	}),
 };

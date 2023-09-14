@@ -63,8 +63,8 @@ TextArea.propTypes = {
 	id: PropTypes.string.isRequired,
 	rows: PropTypes.number,
 	cols: PropTypes.number,
-	validationOptions: PropTypes.object,
-	styleClasses: PropTypes.shape({
+	validationOptions: PropTypes?.object,
+	styleClasses: PropTypes?.shape({
 		width: PropTypes.string,
 		size: PropTypes.string,
 		color: PropTypes.string,

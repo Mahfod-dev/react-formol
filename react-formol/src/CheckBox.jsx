@@ -1,8 +1,3 @@
-// import React, { useContext } from 'react';
-// import PropTypes from 'prop-types';
-// import { FormContext } from './Form';
-// import ErrorMessage from './ErrorMessage';
-
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { FormContext } from './Form';
@@ -36,8 +31,8 @@ Checkbox.propTypes = {
 	name: PropTypes.string.isRequired,
 	label: PropTypes.string.isRequired,
 	id: PropTypes.string.isRequired,
-	validationOptions: PropTypes.object,
-	styleClasses: PropTypes.shape({
+	validationOptions: PropTypes?.object,
+	styleClasses: PropTypes?.shape({
 		input: PropTypes.string,
 		label: PropTypes.string,
 		div: PropTypes.string,

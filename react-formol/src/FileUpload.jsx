@@ -34,7 +34,7 @@ FileUpload.propTypes = {
 	name: PropTypes.string.isRequired,
 	label: PropTypes.string.isRequired,
 	id: PropTypes.string.isRequired,
-	validationOptions: PropTypes.object,
+	validationOptions: PropTypes?.object,
 	styleClasses: PropTypes.shape({
 		input: PropTypes.string,
 		label: PropTypes.string,

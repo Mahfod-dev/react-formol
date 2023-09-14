@@ -58,8 +58,8 @@ Input.propTypes = {
 	label: PropTypes.string.isRequired,
 	id: PropTypes.string.isRequired,
 	type: PropTypes.string,
-	validationOptions: PropTypes.object,
-	styleClasses: PropTypes.shape({
+	validationOptions: PropTypes?.object,
+	styleClasses: PropTypes?.shape({
 		width: PropTypes?.string,
 		size: PropTypes?.string,
 		color: PropTypes?.string,

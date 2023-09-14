@@ -61,8 +61,8 @@ RadioGroup.propTypes = {
 			label: PropTypes.string.isRequired,
 		})
 	).isRequired,
-	validationOptions: PropTypes.object,
-	styleClasses: PropTypes.shape({
+	validationOptions: PropTypes?.object,
+	styleClasses: PropTypes?.shape({
 		input: PropTypes.string,
 		label: PropTypes.string,
 		fieldset: PropTypes.string,
