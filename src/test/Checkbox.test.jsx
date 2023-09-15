@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
-import Input from '../../react-formol/src/Input';
+import CheckBox from '../../react-formol/src/CheckBox';
 import Button from '../../react-formol/src/Button';
 import { FormContext } from '../../react-formol/src/Form';
 import { ErrorStyleContext } from '../../react-formol/src/ErrorStyleContext';
@@ -29,11 +29,10 @@ describe('App component', () => {
 		render(
 			<WrapperComponent>
 				<ErrorStyleContext.Provider value='error'>
-					<Input
-						name='myInput'
-						label='My Input'
-						id='myInputId'
-						type='text'
+					<CheckBox
+						name='acceptTerms'
+						label="J'accepte les conditions générales"
+						id='termsCheckbox'
 						validationOptions={{
 							required: {
 								value: true,
@@ -41,6 +40,7 @@ describe('App component', () => {
 							},
 						}}
 					/>
+
 					<Button
 						type='submit'
 						name='submit'
@@ -55,33 +55,21 @@ describe('App component', () => {
 			</WrapperComponent>
 		);
 
-		const inputElement = screen.getByLabelText(/My Input/i);
-
-		expect(inputElement).toHaveAttribute('id', 'myInputId');
-		expect(inputElement).toHaveAttribute('name', 'myInput');
-
 		await act(async () => {
-			fireEvent.change(screen.getByLabelText(/my input/i), {
-				target: { value: '' },
-			});
+			fireEvent.click(screen.getByText(/submit/i));
 		});
 
-		await act(async () => {
-			fireEvent.click(screen.getByText(/Submit/i));
-		});
-
+		// Vérifie que le message d'erreur est bien affiché
 		expect(screen.getByText(/Le nom est requis/i)).toBeInTheDocument();
 
-		await act(async () => {
-			fireEvent.change(screen.getByLabelText(/my input/i), {
-				target: { value: 'test' },
-			});
-		});
+		// Verifie que la checkbox est bien affichée
+		expect(
+			screen.getByText(/J'accepte les conditions générales/i)
+		).toBeInTheDocument();
 
-		await act(async () => {
-			expect(
-				screen.queryByText(/Le nom est requis/i)
-			).not.toBeInTheDocument();
-		});
+		// Verifie que la checkbox est bien cliquable
+		expect(
+			screen.getByText(/J'accepte les conditions générales/i)
+		).toBeEnabled();
 	});
 });

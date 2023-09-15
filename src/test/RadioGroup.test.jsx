@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
-import Input from '../../react-formol/src/Input';
+import RadioGroup from '../../react-formol/src/RadioGroup';
 import Button from '../../react-formol/src/Button';
 import { FormContext } from '../../react-formol/src/Form';
 import { ErrorStyleContext } from '../../react-formol/src/ErrorStyleContext';
@@ -29,16 +29,17 @@ describe('App component', () => {
 		render(
 			<WrapperComponent>
 				<ErrorStyleContext.Provider value='error'>
-					<Input
-						name='myInput'
-						label='My Input'
-						id='myInputId'
-						type='text'
-						validationOptions={{
-							required: {
-								value: true,
-								message: 'Le nom est requis',
-							},
+					<RadioGroup
+						name='choice'
+						label='Your choice'
+						options={[
+							{ value: 'yes', label: 'Yes' },
+							{ value: 'no', label: 'No' },
+						]}
+						styleClasses={{
+							container: 'radio-group-container mb-5',
+							label: 'radio-group-label',
+							input: 'my-input',
 						}}
 					/>
 					<Button
@@ -55,33 +56,19 @@ describe('App component', () => {
 			</WrapperComponent>
 		);
 
-		const inputElement = screen.getByLabelText(/My Input/i);
+		const yesOption = screen.getByLabelText(/Yes/i);
+		const noOption = screen.getByLabelText(/No/i);
 
-		expect(inputElement).toHaveAttribute('id', 'myInputId');
-		expect(inputElement).toHaveAttribute('name', 'myInput');
+		expect(yesOption).not.toBeChecked();
+		expect(noOption).not.toBeChecked();
 
-		await act(async () => {
-			fireEvent.change(screen.getByLabelText(/my input/i), {
-				target: { value: '' },
-			});
-		});
+		fireEvent.click(yesOption);
 
-		await act(async () => {
-			fireEvent.click(screen.getByText(/Submit/i));
-		});
-
-		expect(screen.getByText(/Le nom est requis/i)).toBeInTheDocument();
+		expect(yesOption).toBeChecked();
+		expect(noOption).not.toBeChecked();
 
 		await act(async () => {
-			fireEvent.change(screen.getByLabelText(/my input/i), {
-				target: { value: 'test' },
-			});
-		});
-
-		await act(async () => {
-			expect(
-				screen.queryByText(/Le nom est requis/i)
-			).not.toBeInTheDocument();
+			fireEvent.click(screen.getByText(/submit/i));
 		});
 	});
 });

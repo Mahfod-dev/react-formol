@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
-import Input from '../../react-formol/src/Input';
+import Radio from '../../react-formol/src/Radio';
 import Button from '../../react-formol/src/Button';
 import { FormContext } from '../../react-formol/src/Form';
 import { ErrorStyleContext } from '../../react-formol/src/ErrorStyleContext';
@@ -29,11 +29,11 @@ describe('App component', () => {
 		render(
 			<WrapperComponent>
 				<ErrorStyleContext.Provider value='error'>
-					<Input
-						name='myInput'
-						label='My Input'
-						id='myInputId'
-						type='text'
+					<Radio
+						name='myRadio'
+						label='Acceptez-vous les termes et conditions ?'
+						id='acceptTandC'
+						value='yes'
 						validationOptions={{
 							required: {
 								value: true,
@@ -55,33 +55,17 @@ describe('App component', () => {
 			</WrapperComponent>
 		);
 
-		const inputElement = screen.getByLabelText(/My Input/i);
+		const radioElement = screen.getByLabelText(
+			/Acceptez-vous les termes et conditions ?/i
+		);
 
-		expect(inputElement).toHaveAttribute('id', 'myInputId');
-		expect(inputElement).toHaveAttribute('name', 'myInput');
-
-		await act(async () => {
-			fireEvent.change(screen.getByLabelText(/my input/i), {
-				target: { value: '' },
-			});
-		});
+		expect(radioElement).toHaveAttribute('id', 'acceptTandC');
+		expect(radioElement).toHaveAttribute('name', 'myRadio');
 
 		await act(async () => {
-			fireEvent.click(screen.getByText(/Submit/i));
+			fireEvent.click(screen.getByText(/submit/i));
 		});
 
-		expect(screen.getByText(/Le nom est requis/i)).toBeInTheDocument();
-
-		await act(async () => {
-			fireEvent.change(screen.getByLabelText(/my input/i), {
-				target: { value: 'test' },
-			});
-		});
-
-		await act(async () => {
-			expect(
-				screen.queryByText(/Le nom est requis/i)
-			).not.toBeInTheDocument();
-		});
+		expect(screen.getByText(/Le nom est requis/i)).toBeDefined();
 	});
 });
