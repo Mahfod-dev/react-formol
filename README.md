@@ -39,7 +39,7 @@ or go for traditional CSS depending on your project requirements.
 npm install react-formol
 ```
 
-````
+```
 
 Or if you're using Yarn:
 
@@ -619,17 +619,3 @@ MIT License. See [LICENSE](LICENSE) for more information.
 ```
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-```
-````
