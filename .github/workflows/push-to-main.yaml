@@ -17,8 +17,8 @@ jobs:
             # Configure Git identity
             - name: Configure Git identity
               run: |
-                  git config user.email "your-email@example.com"
-                  git config user.name "Your Name"
+                  git config user.email "mahfod.dev@gmail.com"
+                  git config user.name "Mahfod-dev"
 
             # Switch to main branch
             - name: Checkout main branch
