@@ -17,6 +17,10 @@ jobs:
             - name: Configure Git identity
               run: ./set-git-identity.sh
 
+            - name: Configure Git
+              run:
+                  git config --global user.token ${{ secrets.YOUR_GITHUB_TOKEN}}
+
             # Switch to main branch
             - name: Checkout main branch
               run: |
