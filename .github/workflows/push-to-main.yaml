@@ -13,7 +13,12 @@ jobs:
             - name: Checkout code from develop
               uses: actions/checkout@v2
               with:
-                  ref: develop
+                  ref:
+                      develop
+
+                      # Exécuter le script pour configurer l'identité Git
+            - name: Set Git Identity
+              run: ./set-git-identity.sh
 
             # Supprimer le dossier similaire dans la branche main
             - name: Checkout main branch and remove similar folder
@@ -22,10 +27,6 @@ jobs:
                   git checkout main
                   git rm -r react-formol/
                   git commit -m "Remove old react-formol folder"
-
-            # Exécuter le script pour configurer l'identité Git
-            - name: Set Git Identity
-              run: ./set-git-identity.sh
 
             # Copier le dossier react-formal
             - name: Copy react-formal folder
