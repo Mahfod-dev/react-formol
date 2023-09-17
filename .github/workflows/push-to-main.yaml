@@ -13,7 +13,7 @@ jobs:
 
         steps:
             - name: Checkout code from develop
-              uses: actions/checkout@v2
+              uses: actions/checkout@v3
               with:
                   ref: develop
 
@@ -33,7 +33,7 @@ jobs:
               run: git checkout develop -- react-formol/
 
             - name: Rename react-formal to react-formol
-              run: mv react-formal/ react-formol/
+              run: mv react-formol/ react-formol/
 
             - name: Commit and push to main
               run: |
