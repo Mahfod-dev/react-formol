@@ -1,4 +1,4 @@
-name: Push react-formal to main
+name: Push react-formol to main
 
 on:
     push:
@@ -9,29 +9,37 @@ jobs:
     sync:
         runs-on: ubuntu-latest
         steps:
+            # Checkout code from the develop branch
             - name: Checkout code from develop
-              uses: actions/checkout@v3
+              uses: actions/checkout@v2
               with:
                   ref: develop
 
-            - name: Debugging after checkout
-              run: |
-                  pwd
-                  ls -la
+            # Debugging step to display the current directory
+            - name: Afficher le répertoire courant
+              run: pwd
 
-            - name: Copy react-formal folder
-              run: |
-                  cp -r react-formal/ react-formal-tmp/
+            # Debugging step to list all files and directories
+            - name: Lister les fichiers
+              run: ls -la
 
+            # Copy react-formal folder
+            - name: Copie du dossier react-formol
+              run:
+                  cp -r react-formol/ react-formol-tmp/ || echo "Échec de la
+                  copie du dossier react-formol/"
+
+            # Fetch and checkout main branch
             - name: Checkout main branch
               run: |
                   git fetch origin main:main
                   git checkout main
 
+            # Move the copied folder to the current directory (inside main branch)
             - name: Move copied folder into main
-              run: |
-                  mv react-formal-tmp/* ./
+              run: mv react-formol-tmp/* ./
 
+            # Commit and push changes to main
             - name: Commit and push to main
               run: |
                   git add .
