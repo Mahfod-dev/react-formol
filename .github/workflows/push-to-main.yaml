@@ -14,22 +14,6 @@ jobs:
               with:
                   ref: develop
 
-            - name: Setup Node.js
-              uses: actions/setup-node@v2
-              with:
-                  node-version: '16'
-
-            - name: Install dependencies
-              run: npm install
-
-            # Ajout de l'étape de lint
-            - name: Run lint
-              run: npm run lint # Assurez-vous que cette commande est configurée dans votre package.json
-
-            # Ajout de l'étape de test
-            - name: Run tests
-              run: npm test # Assurez-vous que cette commande est configurée dans votre package.json
-
             - name: Checkout main branch
               run: |
                   git fetch origin main:main
