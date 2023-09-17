@@ -32,22 +32,13 @@ jobs:
                   git fetch origin main:main
                   git checkout main
 
-            # Nouvelle étape de débogage avant la copie
-            - name: Lister les fichiers avant la copie
-              run: ls -la
-
-            # Copier le dossier
+            # Copier le dossier dans le même répertoire (ou un sous-répertoire)
             - name: Copy react-formal folder
-              run: |
-                  cp -r react-formal/ ../react-formal-tmp/ || echo "Erreur lors de la copie du dossier react-formal."
-
-            # Nouvelle étape de débogage après la copie
-            - name: Lister les fichiers après la copie
-              run: ls -la ../
+              run: cp -r react-formal/ react-formal-tmp/
 
             # Commit et push sur la branche main
             - name: Commit and push to main
               run: |
-                  git add ../react-formal-tmp/
+                  git add react-formal-tmp/
                   git commit -m "Sync react-formal from develop"
                   git push origin main
