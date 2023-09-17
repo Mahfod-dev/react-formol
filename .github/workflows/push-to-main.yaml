@@ -1,42 +1,82 @@
-name: Push react-formol to main
+name: Sync react-formol folder to main branch
 
 on:
     push:
         branches:
-            - develop # Trigger the workflow on push events to develop branch
-        tags:
-            - 'v*' # or when a tag starting with 'v' is created
+            - develop
 
 jobs:
-    sync:
+    sync-folder:
         runs-on: ubuntu-latest
-
         steps:
-            - name: Checkout code from develop
+            - name: Checkout code from develop branch
               uses: actions/checkout@v3
               with:
                   ref: develop
 
-            - name: Set Git Identity
+            # Configure Git identity
+            - name: Configure Git identity
               run: |
-                  git config --global user.email "mahfod.dev@gmail.com"
-                  git config --global user.name "Mahfod-dev"
+                  git config user.email "your-email@example.com"
+                  git config user.name "Your Name"
 
-            - name: Checkout main branch and remove similar folder
+            # Switch to main branch
+            - name: Checkout main branch
               run: |
-                  git fetch origin main:main
+                  git fetch origin main
                   git checkout main
-                  git rm -rf react-formol/
-                  git commit -m "Remove old react-formol folder"
 
-            - name: Checkout react-formal folder from develop
-              run: git checkout develop -- react-formol/
+            # Copy folder from develop to main branch
+            - name: Copy react-formol folder
+              run: |
+                  git checkout develop -- react-formol/
 
-            - name: Rename react-formal to react-formol
-              run: mv react-formol/ react-formol/
-
-            - name: Commit and push to main
+            # Commit changes to main branch
+            - name: Commit and push to main branch
               run: |
                   git add react-formol/
-                  git commit -m "Sync react-formal to react-formol in main"
+                  git commit -m "Sync react-formol folder from develop to main"
                   git push origin main
+
+# name: Push react-formol to main
+
+# on:
+#     push:
+#         branches:
+#             - develop # Trigger the workflow on push events to develop branch
+#         tags:
+#             - 'v*' # or when a tag starting with 'v' is created
+
+# jobs:
+#     sync:
+#         runs-on: ubuntu-latest
+
+#         steps:
+#             - name: Checkout code from develop
+#               uses: actions/checkout@v3
+#               with:
+#                   ref: develop
+
+#             - name: Set Git Identity
+#               run: |
+#                   git config --global user.email "mahfod.dev@gmail.com"
+#                   git config --global user.name "Mahfod-dev"
+
+#             - name: Checkout main branch and remove similar folder
+#               run: |
+#                   git fetch origin main:main
+#                   git checkout main
+#                   git rm -rf react-formol/
+#                   git commit -m "Remove old react-formol folder"
+
+#             - name: Checkout react-formal folder from develop
+#               run: git checkout develop -- react-formol/
+
+#             - name: Rename react-formal to react-formol
+#               run: mv react-formol/ react-formol/
+
+#             - name: Commit and push to main
+#               run: |
+#                   git add react-formol/
+#                   git commit -m "Sync react-formal to react-formol in main"
+#                   git push origin main
