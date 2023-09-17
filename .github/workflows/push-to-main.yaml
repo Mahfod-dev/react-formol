@@ -29,8 +29,14 @@ jobs:
                   git commit -m "Remove old react-formol folder"
 
             # Copier le dossier react-formal
+            - name: Show current directory
+              run: pwd
+
+            - name: List all files
+              run: ls -la
+
             - name: Copy react-formal folder
-              run: cp -r react-formal/ react-formol/
+              run: cp -r react-formal/ react-formol/ || exit 1
 
             # Commit et push sur la branche main
             - name: Commit and push to main
