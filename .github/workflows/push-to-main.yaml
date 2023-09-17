@@ -30,7 +30,7 @@ jobs:
                   git commit -m "Remove old react-formol folder"
 
             - name: Checkout react-formal folder from develop
-              run: git checkout develop -- react-formal/
+              run: git checkout develop -- react-formol/
 
             - name: Rename react-formal to react-formol
               run: mv react-formal/ react-formol/
