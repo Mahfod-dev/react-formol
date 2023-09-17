@@ -2,8 +2,10 @@ name: Push react-formol to main
 
 on:
     push:
+        branches:
+            - develop # Trigger the workflow on push events to develop branch
         tags:
-            - 'v*'
+            - 'v*' # or when a tag starting with 'v' is created
 
 jobs:
     sync:
@@ -13,32 +15,26 @@ jobs:
             - name: Checkout code from develop
               uses: actions/checkout@v2
               with:
-                  ref:
-                      develop
+                  ref: develop
 
-                      # Exécuter le script pour configurer l'identité Git
             - name: Set Git Identity
-              run: ./set-git-identity.sh
+              run: |
+                  git config --global user.email "mahfod.dev@gmail.com"
+                  git config --global user.name "Mahfod-dev"
 
-            # Supprimer le dossier similaire dans la branche main
             - name: Checkout main branch and remove similar folder
               run: |
                   git fetch origin main:main
                   git checkout main
-                  git rm -r react-formol/
+                  git rm -rf react-formol/
                   git commit -m "Remove old react-formol folder"
 
-            # Copier le dossier react-formal
-            - name: Show current directory
-              run: pwd
+            - name: Checkout react-formal folder from develop
+              run: git checkout develop -- react-formal/
 
-            - name: List all files
-              run: ls -la
+            - name: Rename react-formal to react-formol
+              run: mv react-formal/ react-formol/
 
-            - name: Copy react-formal folder
-              run: cp -r react-formal/ react-formol/ || exit 1
-
-            # Commit et push sur la branche main
             - name: Commit and push to main
               run: |
                   git add react-formol/
