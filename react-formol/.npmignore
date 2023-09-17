@@ -17,6 +17,6 @@ __tests__/
 *.log
 
 # Autres fichiers non nécessaires à la librairie
-README.md (si vous n'avez pas besoin d'inclure la documentation dans le package)
+README.md
 CHANGELOG.md
 LICENSE
