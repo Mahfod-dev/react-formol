@@ -14,7 +14,7 @@ function WrapperComponent({ children }) {
 		<FormContext.Provider value={{ ...methods }}>
 			<form
 				onSubmit={methods.handleSubmit(async (data) => {
-					console.log('data', data);
+					return data;
 				})}>
 				{children}
 			</form>
@@ -22,7 +22,7 @@ function WrapperComponent({ children }) {
 	);
 }
 
-describe('App component', () => {
+describe('Input component', () => {
 	it('should display required error when value is invalid', async () => {
 		// Simule le rendu de votre composant React. Cette partie dépend des utilitaires de test de rendu de React que vous utilisez.
 
@@ -46,7 +46,7 @@ describe('App component', () => {
 						name='submit'
 						onClick={async () => {
 							await methods.handleSubmit(async (data) => {
-								console.log('data', data);
+								return data;
 							})();
 						}}>
 						Submit
