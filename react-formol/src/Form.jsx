@@ -21,7 +21,6 @@ function Form({
 		[onSubmit, methods]
 	);
 
-	// Classes personnalisables
 	const { form = '' } = styleClasses || {};
 
 	return (

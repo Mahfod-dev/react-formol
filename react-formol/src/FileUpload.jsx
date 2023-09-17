@@ -6,7 +6,6 @@ import ErrorMessage from './ErrorMessage';
 const FileUpload = ({ name, label, id, validationOptions, styleClasses }) => {
 	const { register } = useContext(FormContext);
 
-	// Classes par défaut
 	const defaultDivClass = 'mb-4';
 	const defaultInputClass =
 		'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline';

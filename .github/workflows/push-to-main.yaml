@@ -1,0 +1,46 @@
+name: Push react-formal to main
+
+on:
+    push:
+        tags:
+            - 'v*'
+
+jobs:
+    sync:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code from develop
+              uses: actions/checkout@v2
+              with:
+                  ref: develop
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v2
+              with:
+                  node-version: '14'
+
+            - name: Install dependencies
+              run: npm install
+
+            # Ajout de l'étape de lint
+            - name: Run lint
+              run: npm run lint # Assurez-vous que cette commande est configurée dans votre package.json
+
+            # Ajout de l'étape de test
+            - name: Run tests
+              run: npm test # Assurez-vous que cette commande est configurée dans votre package.json
+
+            - name: Checkout main branch
+              run: |
+                  git fetch origin main:main
+                  git checkout main
+
+            - name: Copy react-formal folder
+              run: |
+                  cp -r react-formal/ ../react-formal-tmp/
+
+            - name: Commit and push to main
+              run: |
+                  git add ../react-formal-tmp/
+                  git commit -m "Sync react-formal from develop"
+                  git push origin main
