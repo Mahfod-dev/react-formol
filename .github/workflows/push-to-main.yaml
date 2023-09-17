@@ -15,7 +15,7 @@ jobs:
                   ref: develop
 
             - name: Configure Git identity
-              run: setup-git-identity.sh
+              run: set-git-identity.sh
 
             # Switch to main branch
             - name: Checkout main branch
