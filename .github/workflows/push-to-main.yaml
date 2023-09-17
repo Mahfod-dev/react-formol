@@ -1,4 +1,4 @@
-name: Push react-formal to main
+name: Push react-formol to main
 
 on:
     push:
@@ -15,30 +15,25 @@ jobs:
               with:
                   ref: develop
 
-            # Étapes de débogage
-            - name: Afficher le répertoire courant
-              run: pwd
-
-            - name: Lister les fichiers
-              run: ls -la
+            # Supprimer le dossier similaire dans la branche main
+            - name: Checkout main branch and remove similar folder
+              run: |
+                  git fetch origin main:main
+                  git checkout main
+                  git rm -r react-formol/
+                  git commit -m "Remove old react-formol folder"
 
             # Exécuter le script pour configurer l'identité Git
             - name: Set Git Identity
               run: ./set-git-identity.sh
 
-            # Checkout sur la branche main
-            - name: Checkout main branch
-              run: |
-                  git fetch origin main:main
-                  git checkout main
-
-            # Copier le dossier dans le même répertoire (ou un sous-répertoire)
+            # Copier le dossier react-formal
             - name: Copy react-formal folder
-              run: cp -r react-formal/ react-formal-tmp/
+              run: cp -r react-formal/ react-formol/
 
             # Commit et push sur la branche main
             - name: Commit and push to main
               run: |
-                  git add react-formal-tmp/
-                  git commit -m "Sync react-formal from develop"
+                  git add react-formol/
+                  git commit -m "Sync react-formal to react-formol in main"
                   git push origin main
