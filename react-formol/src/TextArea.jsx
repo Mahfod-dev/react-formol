@@ -20,7 +20,7 @@ const TextArea = ({
 	const [isInvalid, setIsInvalid] = useState(false);
 
 	useEffect(() => {
-		setIsInvalid(!!errors[name]); // Mettre à jour 'isInvalid' en fonction de 'errors'
+		setIsInvalid(!!errors[name]);
 	}, [errors, name]);
 
 	const watchField = watch(name);
@@ -37,13 +37,11 @@ const TextArea = ({
 		return { ...validationOptions };
 	}, [validationOptions]);
 
-	// Classes par défaut
 	const defaultContainerClass = 'mb-4';
 	const defaultLabelClass = 'block text-gray-700 font-bold mb-2';
 	const defaultTextAreaClass =
 		'shadow appearance-none border rounded py-2 px-3';
 
-	// Classes personnalisables
 	const {
 		container = defaultContainerClass,
 		label: labelClass = defaultLabelClass,
