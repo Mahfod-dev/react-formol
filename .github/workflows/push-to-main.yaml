@@ -14,7 +14,6 @@ jobs:
               with:
                   ref: develop
 
-            # Configure Git identity
             - name: Configure Git identity
               run: setup-git-identity.sh
 
