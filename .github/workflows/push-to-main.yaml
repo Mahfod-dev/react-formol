@@ -29,6 +29,10 @@ jobs:
                   cp -r react-formol/ react-formol-tmp/ || echo "Échec de la
                   copie du dossier react-formol/"
 
+              # set git identity
+            - name: Set Git Identity
+              run: ./set-git-identity.sh
+
             # Fetch and checkout main branch
             - name: Checkout main branch
               run: |
