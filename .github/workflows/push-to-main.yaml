@@ -16,9 +16,7 @@ jobs:
 
             # Configure Git identity
             - name: Configure Git identity
-              run: |
-                  git config user.email "mahfod.dev@gmail.com"
-                  git config user.name "Mahfod-dev"
+              run: setup-git-identity.sh
 
             # Switch to main branch
             - name: Checkout main branch
@@ -37,46 +35,3 @@ jobs:
                   git add react-formol/
                   git commit -m "Sync react-formol folder from develop to main"
                   git push origin main
-
-# name: Push react-formol to main
-
-# on:
-#     push:
-#         branches:
-#             - develop # Trigger the workflow on push events to develop branch
-#         tags:
-#             - 'v*' # or when a tag starting with 'v' is created
-
-# jobs:
-#     sync:
-#         runs-on: ubuntu-latest
-
-#         steps:
-#             - name: Checkout code from develop
-#               uses: actions/checkout@v3
-#               with:
-#                   ref: develop
-
-#             - name: Set Git Identity
-#               run: |
-#                   git config --global user.email "mahfod.dev@gmail.com"
-#                   git config --global user.name "Mahfod-dev"
-
-#             - name: Checkout main branch and remove similar folder
-#               run: |
-#                   git fetch origin main:main
-#                   git checkout main
-#                   git rm -rf react-formol/
-#                   git commit -m "Remove old react-formol folder"
-
-#             - name: Checkout react-formal folder from develop
-#               run: git checkout develop -- react-formol/
-
-#             - name: Rename react-formal to react-formol
-#               run: mv react-formol/ react-formol/
-
-#             - name: Commit and push to main
-#               run: |
-#                   git add react-formol/
-#                   git commit -m "Sync react-formal to react-formol in main"
-#                   git push origin main
