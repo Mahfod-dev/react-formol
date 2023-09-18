@@ -36,7 +36,7 @@ or go for traditional CSS depending on your project requirements.
 ## Installation
 
 ```bash
-npm install react-formol
+npm install react-keyrus-formol
 ```
 
 ````
@@ -44,7 +44,9 @@ npm install react-formol
 Or if you're using Yarn:
 
 ```bash
-yarn add react-formol
+yarn add react-keyrus-formol
+```
+
 ````
 
 ---
@@ -252,8 +254,6 @@ import { Radio } from 'react-formol';
 ```
 
 ### DatePicker
-
-The
 
 `DatePicker` component is used for date picking.
 
