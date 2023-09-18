@@ -1,4 +1,4 @@
-# react-formol
+# react-keyrus-formol
 
 ## Table of Contents
 
@@ -25,27 +25,27 @@
 
 ## Introduction
 
-`react-formol` is a React library designed to simplify form management in web
-applications. It provides a variety of components that make it easier to create
-powerful and customizable forms. One of the key advantages of this library is
-its flexibility in styling. You can choose to use CSS frameworks like Tailwind
-or go for traditional CSS depending on your project requirements.
+`react-keyrus-formol` is a React library designed to simplify form management in
+web applications. It provides a variety of components that make it easier to
+create powerful and customizable forms. One of the key advantages of this
+library is its flexibility in styling. You can choose to use CSS frameworks like
+Tailwind or go for traditional CSS depending on your project requirements.
 
 ---
 
 ## Installation
 
 ```bash
-npm install react-formol
+npm install react-keyrus-formol
 ```
 
-```
+````
 
 Or if you're using Yarn:
 
 ```bash
-yarn add react-formol
-```
+yarn add react-keyrus-formol
+````
 
 ---
 
@@ -58,7 +58,18 @@ The `Form` component is the wrapper for your form elements.
 ```jsx
 import { Form } from 'react-formol';
 
-<Form>{/* Your form components */}</Form>;
+const onSubmit=(data)=> console.log(data)
+
+// need Button component same function in props
+
+<Form onSubmit={onSubmit}>{/* Your form components */}</Form>;
+
+
+<Button
+type="submit"
+name='submit'
+onClick={onSubmit}
+/>
 ```
 
 ### FormContext
@@ -619,3 +630,4 @@ MIT License. See [LICENSE](LICENSE) for more information.
 ```
 
 
+```
