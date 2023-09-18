@@ -1,5 +1,5 @@
 {
-	"name": "react-formol",
+	"name": "react-keyrus-form",
 	"version": "0.1.0",
 	"description": "A reusable form package with Zod, Tailwind, and React Hook Form",
 	"main": "src/index.js",
