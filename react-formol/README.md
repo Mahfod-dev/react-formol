@@ -1,4 +1,4 @@
-# react-formol
+# react-keyrus-formol
 
 ## Table of Contents
 
@@ -58,7 +58,7 @@ yarn add react-keyrus-formol
 The `Form` component is the wrapper for your form elements.
 
 ```jsx
-import { Form } from 'react-formol';
+import { Form } from 'react-keyrus-formol';
 
 const onSubmit=(data)=> console.log(data)
 
@@ -81,7 +81,7 @@ onClick={onSubmit}
 The `FormContext` provides the required context for form components.
 
 ```jsx
-import { FormContext } from 'react-formol';
+import { FormContext } from 'react-keyrus-formol';
 
 <FormContext.Provider value={{ ...methods }}>
 	<form onSubmit={methods.handleSubmit(handleSubmit)}>
@@ -104,7 +104,7 @@ The `Input` component is used for input fields.
 -   `styleClasses`: Object (optional) - Custom CSS classes for styling.
 
 ```jsx
-import { Input } from 'react-formol';
+import { Input } from 'react-keyrus-formol';
 
 <Input
 	name='age'
@@ -136,7 +136,7 @@ The `Select` component is used for dropdown selection.
 -   `styleClasses`: Object (optional) - Custom CSS classes for styling.
 
 ```jsx
-import { Select } from 'react-formol';
+import { Select } from 'react-keyrus-formol';
 
 <Select
 	name='choice'
@@ -168,7 +168,7 @@ The `Button` component is used for buttons.
 -   `styleClasses`: Object (optional) - Custom CSS classes for styling.
 
 ```jsx
-import { Button } from 'react-formol';
+import { Button } from 'react-keyrus-formol';
 
 <Button
 	type='submit'
@@ -192,7 +192,7 @@ The `ErrorMessage` component is used for displaying error messages.
 -   `styleClasses`: Object (optional) - Custom CSS classes for styling.
 
 ```jsx
-import { ErrorMessage } from 'react-formol';
+import { ErrorMessage } from 'react-keyrus-formol';
 
 <ErrorMessage
 	name='age'
@@ -215,7 +215,7 @@ The `RadioGroup` component is used for grouping radio buttons.
 -   `styleClasses`: Object (optional) - Custom CSS classes for styling.
 
 ```jsx
-import { RadioGroup } from 'react-formol';
+import { RadioGroup } from 'react-keyrus-formol';
 
 <RadioGroup
 	name='gender'
@@ -249,7 +249,7 @@ The `Radio` component is used for individual radio buttons.
 -   `styleClasses`: Object (optional) - Custom CSS classes for styling.
 
 ```jsx
-import { Radio } from 'react-formol';
+import { Radio } from 'react-keyrus-formol';
 
 <Radio
 	name='gender'
@@ -279,7 +279,7 @@ import { Radio } from 'react-formol';
 -   `styleClasses`: Object (optional) - Custom CSS classes for styling.
 
 ```jsx
-import { DatePicker } from 'react-formol';
+import { DatePicker } from 'react-keyrus-formol';
 
 <DatePicker
 	name='birthdate'
@@ -309,7 +309,7 @@ The `Checkbox` component is used for checkboxes.
 -   `styleClasses`: Object (optional) - Custom CSS classes for styling.
 
 ```jsx
-import { Checkbox } from 'react-formol';
+import { Checkbox } from 'react-keyrus-formol';
 
 <Checkbox
 	name='acceptTerms'
@@ -339,7 +339,7 @@ The `Textarea` component is used for multiline text input.
 -   `styleClasses`: Object (optional) - Custom CSS classes for styling.
 
 ```jsx
-import { Textarea } from 'react-formol';
+import { Textarea } from 'react-keyrus-formol';
 
 <Textarea
 	name='description'
@@ -369,7 +369,7 @@ The `FileUpload` component is used for file uploads.
 -   `styleClasses`: Object (optional) - Custom CSS classes for styling.
 
 ```jsx
-import { FileUpload } from 'react-formol';
+import { FileUpload } from 'react-keyrus-formol';
 
 <FileUpload
 	name='file'
