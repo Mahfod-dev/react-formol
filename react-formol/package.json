@@ -2,13 +2,13 @@
 	"name": "react-keyrus-formol",
 	"version": "0.5.0",
 	"description": "A reusable form package with Zod, Tailwind, and React Hook Form",
-	"main": "./dist/react-keyrus-formol.umd.js",
+	"main": "./dist/react-keyrus-formol.umd.cjs",
 	"module": "./dist/react-keyrus-formol.js",
 	"type": "module",
 	"exports": {
 		".": {
 			"import": "./dist/react-keyrus-formol.js",
-			"require": "./dist/react-keyrus-formol.umd.js"
+			"require": "./dist/react-keyrus-formol.umd.cjs"
 		}
 	},
 	"repository": {
