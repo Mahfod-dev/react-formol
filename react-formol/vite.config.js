@@ -9,7 +9,7 @@ export default defineConfig({
 		lib: {
 			entry: path.resolve(__dirname, 'src/index.js'),
 			name: 'ReactFormol',
-			fileName: 'react-formol',
+			fileName: 'react-keyrus-formol',
 		},
 		rollupOptions: {
 			external: ['react', 'react-dom', 'prop-types'],
