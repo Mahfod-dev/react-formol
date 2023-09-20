@@ -1,8 +1,16 @@
 {
 	"name": "react-keyrus-formol",
-	"version": "0.4.0",
+	"version": "0.5.0",
 	"description": "A reusable form package with Zod, Tailwind, and React Hook Form",
-	"main": "src/index.js",
+	"main": "./dist/react-keyrus-formol.umd.js",
+	"module": "./dist/react-keyrus-formol.js",
+	"type": "module",
+	"exports": {
+		".": {
+			"import": "./dist/react-keyrus-formol.js",
+			"require": "./dist/react-keyrus-formol.umd.js"
+		}
+	},
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/Mahfod-dev/react-formol"
@@ -19,16 +27,23 @@
 	"peerDependencies": {
 		"react": ">=16.8.0",
 		"react-dom": ">=16.8.0",
-		"zod": "^3.0.0",
 		"react-hook-form": "^7.0.0",
-		"tailwindcss": "^3.0.0"
+		"tailwindcss": "^3.0.0",
+		"zod": "^3.0.0"
 	},
 	"files": [
-		"src/",
+		"dist/",
 		"README.md",
 		"LICENSE",
 		"CHANGELOG.md",
 		"CODE_OF_CONDUCT.md",
 		"CONTRIBUTING.md"
-	]
+	],
+	"scripts": {
+		"build": "vite build"
+	},
+	"devDependencies": {
+		"@vitejs/plugin-react": "^4.0.4",
+		"vite": "^4.4.9"
+	}
 }
