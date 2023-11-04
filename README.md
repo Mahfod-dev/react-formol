@@ -337,9 +337,9 @@ The `Textarea` component is used for multiline text input.
 -   `styleClasses`: Object (optional) - Custom CSS classes for styling.
 
 ```jsx
-import { Textarea } from 'react-formol';
+import { TextArea } from 'react-formol';
 
-<Textarea
+<TextArea
 	name='description'
 	label='Description'
 	id='description'
